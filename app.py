@@ -23,12 +23,30 @@ except LookupError:
 
 app = Flask(__name__)
 
-# ===============================
-# Load Saved Models
-# ===============================
+import os
+import gdown
+import joblib
+
+MODEL_DIR = "models"
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+FILES = {
+    "ensemble_model.pkl": "1cdqJKBPFn3cQXFNYyOLUIitd2d2ZdayQ",
+    "label_encoder.pkl": "1pxXSzlfXc42-1bfKmsziUoBCT79KLQ66",
+    "tfidf_vectorizer.pkl": "1BH-t3Y1xyjgrRYJp9wNePLFmUjh6VLyN",
+}
+
+for filename, file_id in FILES.items():
+    path = os.path.join(MODEL_DIR, filename)
+
+    if not os.path.exists(path):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, path, quiet=False)
+
+# Load models
 ensemble_model = joblib.load("models/ensemble_model.pkl")
-tfidf = joblib.load("models/tfidf_vectorizer.pkl")
 label_encoder = joblib.load("models/label_encoder.pkl")
+tfidf = joblib.load("models/tfidf_vectorizer.pkl")
 
 # ===============================
 # Text Preprocessing
@@ -105,4 +123,4 @@ def predict():
 # Run App
 # ===============================
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
