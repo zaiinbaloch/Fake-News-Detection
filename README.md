@@ -1,11 +1,77 @@
+<<<<<<< HEAD
+# 📰 Fake News Detection using Classical Machine Learning & Soft Voting Ensemble
+
+A comprehensive **Natural Language Processing (NLP)** and **Machine Learning** project that detects whether a news article is **Fake** or **Real** using TF-IDF feature extraction and multiple classical machine learning algorithms. The final deployed system uses a **Soft Voting Ensemble** to improve prediction robustness and generalization.
+=======
 # 📰 Fake News Detection — Classical ML with NLP
 
 A machine learning pipeline that classifies news articles as **fake** or **real** using NLP-based feature extraction and five classical classifiers, plus unsupervised DBSCAN clustering for exploratory analysis.
+>>>>>>> faf81f0fbab11c275413f81896256d01c3ea4b86
 
 ---
 
 ## 📌 Overview
 
+<<<<<<< HEAD
+Fake news has become one of the major challenges in the digital era. This project presents an end-to-end machine learning pipeline that classifies news articles as **Fake** or **Real**. It covers the complete workflow from data preprocessing and feature engineering to model evaluation, ensemble learning, and deployment as a Flask web application.
+
+---
+
+## ✨ Features
+
+* 📊 Exploratory Data Analysis (EDA)
+* 🧹 Advanced Text Preprocessing
+* 🔠 TF-IDF Feature Extraction
+* 🤖 Training of Multiple Classical ML Models
+* 🗳️ Soft Voting Ensemble Classifier
+* 📈 Model Performance Comparison
+* 📉 Confusion Matrices & ROC Curves
+* 🌐 Flask Web Application
+* ☁️ Ready for Render Deployment
+
+---
+
+# 📂 Project Structure
+
+```text
+Fake-News-Detection/
+│
+├── app.py
+├── requirements.txt
+├── Procfile
+├── README.md
+├── .gitignore
+│
+├── models/
+│   ├── ensemble_model.pkl
+│   ├── tfidf_vectorizer.pkl
+│   └── label_encoder.pkl
+│
+├── notebooks/
+│   └── Fake_News_Detection.ipynb
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   ├── style.css
+│   └── script.js
+│
+├── results/
+│   ├── cm_nb.png
+│   ├── cm_lr.png
+│   ├── cm_rf.png
+│   ├── cm_svm.png
+│   ├── cm_knn.png
+│   ├── cm_ensemble.png
+│   ├── roc_curve.png
+│   ├── metrics_heatmap.png
+│   └── label_distribution.png
+│
+└── screenshots/
+    ├── homepage.png
+    └── prediction.png
+=======
 This project applies classical ML to the fake news detection problem using a TF-IDF text representation pipeline. Five supervised classifiers are trained and compared, and DBSCAN clustering is used to explore natural groupings in the data without labels.
 
 **Key design choices:**
@@ -40,10 +106,77 @@ This project applies classical ML to the fake news detection problem using a TF-
     ├── test_vs_val_accuracy.png
     ├── metrics_heatmap.png
     └── roc_curve.png
+>>>>>>> faf81f0fbab11c275413f81896256d01c3ea4b86
 ```
 
 ---
 
+<<<<<<< HEAD
+# 📊 Dataset
+
+Dataset used:
+
+**Fake and Real News Dataset**
+
+Source:
+
+https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+
+Files included:
+
+* Fake.csv
+* True.csv
+
+Each article contains:
+
+* Title
+* News Text
+* Subject
+* Date
+
+---
+
+# 🔄 Machine Learning Pipeline
+
+```text
+Dataset
+    │
+    ▼
+Data Cleaning
+    │
+    ▼
+Exploratory Data Analysis
+    │
+    ▼
+Text Preprocessing
+    │
+    ▼
+TF-IDF Vectorization
+    │
+    ▼
+70% Train
+15% Validation
+15% Test
+    │
+    ▼
+Model Training
+    │
+    ├── Multinomial Naive Bayes
+    ├── Logistic Regression
+    ├── Random Forest
+    ├── Support Vector Machine
+    ├── K-Nearest Neighbors
+    └── DBSCAN
+    │
+    ▼
+Performance Evaluation
+    │
+    ▼
+Soft Voting Ensemble
+    │
+    ▼
+Flask Deployment
+=======
 ## 🗃️ Dataset
 
 This project uses the [Fake and Real News Dataset](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset) from Kaggle.
@@ -90,10 +223,168 @@ Model Training & Evaluation
        ↓
 Comparison: Accuracy · Precision · Recall · F1 · AUC-ROC
             Confusion matrices · ROC curves · Metrics heatmap
+>>>>>>> faf81f0fbab11c275413f81896256d01c3ea4b86
 ```
 
 ---
 
+<<<<<<< HEAD
+# 🧹 Text Preprocessing
+
+The preprocessing pipeline includes:
+
+* Lowercase conversion
+* URL removal
+* HTML tag removal
+* Reuters tag removal
+* Punctuation removal
+* Number removal
+* Stopword removal
+* Lemmatization
+* Whitespace normalization
+
+---
+
+# ⚙️ Feature Engineering
+
+The project uses **TF-IDF Vectorization** with the following configuration:
+
+* Maximum Features: **5000**
+* N-grams: **Unigrams + Bigrams**
+* Sublinear TF Scaling
+* Unicode normalization
+* Minimum document frequency = **2**
+* Maximum document frequency = **0.95**
+
+The TF-IDF vectorizer is fitted **only on the training set** to prevent data leakage.
+
+---
+
+# 🤖 Models Evaluated
+
+| Model                        | Purpose                             |
+| ---------------------------- | ----------------------------------- |
+| Multinomial Naive Bayes      | Supervised Classification           |
+| Logistic Regression          | Supervised Classification           |
+| Random Forest                | Supervised Classification           |
+| Support Vector Machine (SVM) | Supervised Classification           |
+| K-Nearest Neighbors (KNN)    | Performance Comparison              |
+| DBSCAN                       | Exploratory Unsupervised Clustering |
+
+---
+
+# 🚀 Final Deployment Model
+
+The deployed web application uses a **Soft Voting Ensemble** consisting of:
+
+* Multinomial Naive Bayes
+* Logistic Regression
+* Random Forest
+* Support Vector Machine (SVM)
+
+### Why isn't KNN included?
+
+Although **K-Nearest Neighbors (KNN)** was trained and evaluated, it was **not selected for deployment** because:
+
+* TF-IDF creates high-dimensional sparse feature vectors.
+* KNN prediction is computationally expensive on sparse text data.
+* The performance improvement did not justify the additional inference time.
+
+Similarly, **DBSCAN** was used only for exploratory clustering and is **not part of the deployed prediction pipeline**.
+
+---
+
+# 📈 Evaluation Metrics
+
+Each supervised model was evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* ROC-AUC Score
+
+Visualization includes:
+
+* Confusion Matrices
+* ROC Curve
+* Metrics Heatmap
+* Model Comparison
+* Label Distribution
+* Word Clouds
+
+---
+
+# 🌐 Web Application
+
+The trained Soft Voting Ensemble has been deployed as a Flask web application.
+
+### Features
+
+* Paste any news article
+* Automatic preprocessing
+* TF-IDF vectorization
+* Ensemble prediction
+* Confidence score
+* Responsive user interface
+
+---
+
+# 💾 Saved Models
+
+The application loads the following serialized objects during inference:
+
+* `ensemble_model.pkl`
+* `tfidf_vectorizer.pkl`
+* `label_encoder.pkl`
+
+These files are loaded using **Joblib**.
+
+---
+
+# 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/your-username/Fake-News-Detection.git
+```
+
+Navigate into the project
+
+```bash
+cd Fake-News-Detection
+```
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it (Windows)
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+python app.py
+```
+
+Open your browser:
+
+```
+http://127.0.0.1:5000
+=======
 ## 🧹 Text Preprocessing
 
 The `clean_text` function applies these steps in order:
@@ -155,10 +446,52 @@ python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet'); nl
 
 # 5. Open and run the notebook
 jupyter notebook Fake_News_Detection.ipynb
+>>>>>>> faf81f0fbab11c275413f81896256d01c3ea4b86
 ```
 
 ---
 
+<<<<<<< HEAD
+# 🛠 Technologies Used
+
+* Python
+* Flask
+* Scikit-learn
+* Pandas
+* NumPy
+* SciPy
+* NLTK
+* Joblib
+* Matplotlib
+* Seaborn
+* WordCloud
+* HTML
+* CSS
+* JavaScript
+
+---
+
+# 📷 Screenshots
+
+## 🏠 Home Page
+
+> ![alt text](webpage.png)
+
+---
+
+## 🔍 Prediction Example
+
+> ![alt text](<webpage 2.png>)
+
+---
+
+# 👨‍💻 Author
+
+**Ghulam Zain Ul Abidin Rind**
+
+Machine Learning • Artificial Intelligence • NLP • Data Science
+
+=======
 ## 📋 Requirements
 
 - Python 3.8+
@@ -167,3 +500,4 @@ jupyter notebook Fake_News_Detection.ipynb
 - `nltk`
 - `wordcloud`
 - `matplotlib`, `seaborn`
+>>>>>>> faf81f0fbab11c275413f81896256d01c3ea4b86
