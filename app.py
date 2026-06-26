@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
 import re
+import os
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -41,7 +42,7 @@ for filename, file_id in FILES.items():
 
     if not os.path.exists(path):
         url = f"https://drive.google.com/uc?id={file_id}"
-        gdown.download(url, path, quiet=False)
+        gdown.download(url, path, quiet=False, fuzzy=True)
 
 # Load models
 ensemble_model = joblib.load("models/ensemble_model.pkl")
@@ -123,4 +124,5 @@ def predict():
 # Run App
 # ===============================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host="0.0.0.0", port=port)
